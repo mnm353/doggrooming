@@ -1,6 +1,6 @@
-create table product {
+create table product (
     id serial PRIMARY KEY,
-    name varchar (100) no null,
+    name varchar (100) not null,
     description varchar(500) not null,
-    price number,
-}
+    price decimal not null
+);
