@@ -26,6 +26,9 @@ app.use(session({
     saveUninitialized: true,
     cookie: { maxAge: 60000 }
 }))
+app.get('/api/test', (req, res, next)=>{
+    res.send('This worked!')
+})
 
 const port = process.env.PORT || 8065;
 app.listen(port, () => {
