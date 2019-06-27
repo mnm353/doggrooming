@@ -2,13 +2,14 @@ import React, { Component } from 'react'
 import './login.css'
 import axios from 'axios';
 import {connect} from 'react-redux'
-import {setUser} from '../../redux/action_creators/action_creator';
+import * as actions from '../../redux/action_creaters/action_creator'
 
 class Login extends Component {
     state = {
         email:'',
         password:''
     }
+    
     login = () => {
         const loginObj = {
             email: this.state.email,
@@ -20,7 +21,7 @@ class Login extends Component {
                 this.props.setUser(response.user);
                 this.props.history.push('/products');
             }else{
-                alert('Wrong credentials')
+                alert('Incorrect credentials')
             }
         })
     }
@@ -33,4 +34,4 @@ class Login extends Component {
     }
 }
 
-export default connect(state => state, actions) Login
+export default connect(state => state, actions)(Login);

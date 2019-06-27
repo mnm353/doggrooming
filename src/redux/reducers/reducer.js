@@ -1,7 +1,13 @@
 import { combineReducers} from 'redux'
 
-const products = (state= [], action) => {
+const user = (state= {}, action) => {
+    switch(action.type){
+        case 'set_user':
+            return action.payload;
+        default:
+            return state;
+    }
     return state;
 }
 
-export default combineReducers({products});
+export default combineReducers({user});
