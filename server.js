@@ -26,6 +26,11 @@ app.use(session({
     saveUninitialized: true,
     cookie: { maxAge: 60000 }
 }))
+
+//routes
+app.post('/api/register', controller.register)
+app.post('/api/login', controller.login)
+
 app.get('/api/test', (req, res, next)=>{
     res.send('This worked!')
 })
