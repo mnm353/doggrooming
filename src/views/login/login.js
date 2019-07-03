@@ -17,9 +17,9 @@ class Login extends Component {
 			email: this.state.email,
 			password: this.state.password
 		}
-		axios.post("/api/login", loginObj).then(response => {
-			if (response.success) {
-				this.props.setUser(response.user)
+		axios.post("/api/login", loginObj).then(({ data }) => {
+			if (data.success) {
+				this.props.setUser(data.user)
 				this.props.history.push("/products")
 			} else {
 				alert("Incorrect credentials")
@@ -31,8 +31,31 @@ class Login extends Component {
 			showRegister: true
 		})
 	}
+	register = registerObj => {
+		debugger
+		axios.post("/api/register", registerObj).then(({ data }) => {
+			debugger
+			if (data.success) {
+				this.props.setUser(data.user)
+				this.props.history.push("/products")
+			} else {
+				alert("Email already exists login.")
+			}
+		})
+	}
+
+	handleChange = e => {
+		this.setState({
+			[e.target.name]: e.target.value
+		})
+	}
+
 	render() {
-		const register = this.state.showRegister ? <Register /> : ""
+		const register = this.state.showRegister ? (
+			<Register register={this.register} />
+		) : (
+			""
+		)
 		return (
 			<div className='login'>
 				{register}
@@ -40,6 +63,20 @@ class Login extends Component {
 					""
 				) : (
 					<div>
+						<input
+							type='text'
+							placeholder='Email'
+							name='email'
+							value={this.state.email}
+							onChange={this.handleChange}
+						/>
+						<input
+							type='text'
+							placeholder='Password'
+							name='password'
+							value={this.state.password}
+							onChange={this.handleChange}
+						/>
 						<button onClick={this.login}>login</button>
 						<button onClick={this.showRegister}>register</button>
 					</div>

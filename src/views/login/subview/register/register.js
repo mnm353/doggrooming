@@ -19,6 +19,7 @@ export default class register extends Component {
 			return (
 				<input
 					type='text'
+					key={i}
 					placeholder={e}
 					name={e}
 					value={this.state[e]}
