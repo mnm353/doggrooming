@@ -11,7 +11,7 @@ export default function Header() {
 			</div>
 			<div>
 				{" "}
-				<Link to='/products'>Pear</Link>{" "}
+				<Link to='/products'>Dog Grooming Experts</Link>{" "}
 			</div>
 			<div>
 				<Link to='/cart'>
